@@ -33,10 +33,10 @@
     self.scrollView.pagingEnabled = YES;
     self.scrollView.delegate = self;
     self.scrollView.bounces = true;
-    self.scrollView.contentInset = UIEdgeInsetsMake(0, 160, 0, 160);
+    self.scrollView.contentInset = UIEdgeInsetsMake(0, 280, 0, 280);
 
     
-    for (int i = 1; i < NUM_PHOTO +1; i++) {
+    for (int i = 0; i < NUM_PHOTO +2; i++) {
         NSString * fileName = [NSString stringWithFormat:@"%d.jpg", i];
         UIImage *image = [UIImage imageNamed:fileName];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
@@ -44,6 +44,9 @@
         imageView.frame = CGRectMake((i - 1) * PHOTO_WIDTH, 0, PHOTO_WIDTH, PHOTO_HEIGHT);
         [self.scrollView addSubview:imageView];
     }
+    //add Inset image
+    
+    
     
     [self.view addSubview:self.scrollView];
     self.pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, size.height - 64- 40, size.width, 40)];
@@ -77,11 +80,11 @@
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
  // printf("2-on p.change contentOffset: %3.0f\n",_scrollView.contentOffset.x);
     self.pageControl.currentPage = self.scrollView.contentOffset.x/ PHOTO_WIDTH;
-    if (self.scrollView.contentOffset.x>1600+140) {
+    if (self.scrollView.contentOffset.x>1600+160) {
    
-        self.scrollView.contentOffset = CGPointMake(0,  0);
+        self.scrollView.contentOffset = CGPointMake(0, 0);
     }
-    if (self.scrollView.contentOffset.x<-140) {
+    if (self.scrollView.contentOffset.x<-160) {
         self.scrollView.contentOffset = CGPointMake(5*PHOTO_WIDTH ,  0);
     }
     NSString *myString = [NSString stringWithFormat:@"%1.0ld",(long)self.pageControl.currentPage+1];
