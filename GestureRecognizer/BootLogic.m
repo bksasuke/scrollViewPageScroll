@@ -20,8 +20,8 @@
                                     @{TITLE: @"Scale With Slider", CLASS: @"ScaleWithSlider"},
                                     @{TITLE: @"ContentSize Basic", CLASS: @"ContentSizeBasic"},
                                     @{TITLE: @"Tap to Zoom", CLASS: @"TapToZoom"},
+                                    @{TITLE: @"ContentSize Demo", CLASS: @"ContentSizeDemo"},
                                     @{TITLE: @"Simple Page Scroll", CLASS: @"SimpleScroll"},
-//                                    @{TITLE: @"Pan Velocity", CLASS: @"PanVelocity"},
 //                                    @{TITLE: @"Random Bird", CLASS: @"RandomBird"}
                           ]};
     
