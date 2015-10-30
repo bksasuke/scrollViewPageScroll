@@ -17,6 +17,9 @@
 @end
 
 @implementation SimpleScroll
+{
+    NSTimer *timer;
+}
 
 - (void)viewDidLoad
 {
@@ -49,16 +52,23 @@
                forControlEvents:UIControlEventValueChanged];
     self.pageControl.currentPage = self.scrollView.contentOffset.x/ PHOTO_WIDTH;
     [self.view addSubview:self.pageControl];
+    
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1
+                                             target:self
+                                           selector:@selector(scrollViewDidScroll:)
+                                           userInfo:nil
+                                            repeats:true];
 }
 -(void)viewDidAppear:(BOOL)animated {
     self.scrollView.delegate = nil;
 }
 -(void)onPageChange:(id)sender {
     self.scrollView.contentOffset = CGPointMake(self.pageControl.currentPage*PHOTO_WIDTH, 0);
-    printf("%3.0ld",(long)self.pageControl.currentPage);
+    printf("on page change %3.0ld",(long)self.pageControl.currentPage);
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView {
     self.pageControl.currentPage = self.scrollView.contentOffset.x/ PHOTO_WIDTH;
+    printf("on scroll view %3.0ld",(long)self.pageControl.currentPage);
     [self.view addSubview:self.pageControl];
 }
 @end
